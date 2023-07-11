@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Practice</title>
+	</head>
+	<body>
+		<h1 class="dom">Index World</h1>
+		<button class="btn">Click me</button>
+
+
+
+
+<script>
+	
+	const heading = document.querySelector('.dom');
+	const button = document.querySelector('.btn');
+
+	button.addEventListener('click', function(event){
+		console.log('Button Clicked', event) // Just to confirm the metthod worked properly
+		heading.style.color = 'red'
+		heading.style.fontSize = '100px';
+	});
+
+
+
+</script>
+	</body>
+</html>

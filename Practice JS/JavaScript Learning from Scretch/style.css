@@ -1,0 +1,108 @@
+/* My CSS to creat website layout*/
+*
+{
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	font-family: Arial;
+}
+/*Following code was just to understad the adding value to the padding and width in context with 
+above mentioned property box-sizing: border-box;
+*/
+/*#div1 
+{
+	width: 100%;
+	height: 50px;
+	background-color: lightgray;
+	padding-left: 2%;
+	padding-right: 2%;
+	border-left: 20px solid black;
+	border-right: 20px solid black;
+}*/
+/*=======Logo=======*/
+#logo 
+{
+	width: 100%;
+	min-height: 50px;
+	background-color: lightgray;
+	padding-left: 2%;
+	line-height: 50px;
+	margin-bottom: 10px;
+}
+/*=======Navigation=======*/
+#nav_div 
+{
+	width: 100%;
+	min-height: 30px;
+	background-color: lightgray;
+	padding-left: 2%;
+	line-height: 50px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+/*=======Header / Banner=======*/
+#header_banner_div 
+{
+	width: 100%;
+	min-height: 200px;
+	background-color: lightgray;
+	padding-left: 2%;
+	line-height: 200px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+/*=======Main=======*/
+#main_div
+{
+	width: 100%;
+/*	min-height: 400px;*/ /*Removed when the child of this classes given the same values*/
+/*	background-color: gray;*/  /*We have added this property to check the division of the area
+allocated to the parent class*/
+	margin-bottom: 10px;
+}
+/*=======Body Area=======*/
+#body_area_div
+{
+	width: 75%;
+	min-height: 650px;	 
+	background-color: lightgray;
+	text-align: center;
+	float: left;
+	line-height: 650px;
+	font-size: 20px;
+	font-family: sans-serif;
+}
+
+/*=======Side Bar=======*/
+#side_bar_div
+{
+	width: 20%;
+	min-height: 650px;
+	background-color: lightgray;
+	float: right;
+	text-align: center;
+	line-height: 650px;
+}
+/*==The following code is to obtain the with area of parent div's (main_div) area, which was 
+	disabled by the brower in result of allocation values to the child classes==*/
+.clearfix::after /*very useful class*/
+{
+	content: "";
+	display: block;
+	clear: both;
+}
+/*=======Footer=======*/
+#footer_div{
+	width: 100%;
+	min-height: 200px;
+	background-color: lightgray;
+	line-height: 200px;
+	text-align: center;
+}
+/*=======Wrapper=======*/
+#wrapper_div
+{
+	width: 80%;
+/*	background-color: orange;*/
+	margin: auto;
+}
