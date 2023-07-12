@@ -1,13 +1,13 @@
 /*JavaScript DOM Manipulation*/
 
-// 1 - Get ElementByID
+// 1 - Get getElementById
 	/*psudo:
 	keyword variable name = htmlDocument.domMethod(html id given in html doc)*/
 
 	// const heading = document.getElementById('dom');
 	// console.log(heading);
 
-// 2 - Get ElementsByTagName
+// 2 - Get getElementsByTagName
 	/*console output:
 		in the console, following lines display the array of h3 mentioned in html doc*/
 		// const heading = document.getElementsByTagName('h3');
@@ -104,13 +104,75 @@
 										// DOM Events
 
 		// Event
-		const forButton = document.querySelector('#btn');	// we get btn by mentioning Id
-		const heading = document.querySelector('#dom');		// we get dom class by mentioning Id
+		// const forButton = document.querySelector('#btn');	// we get btn by mentioning Id
+		// const heading = document.querySelector('#dom');		// we get dom class by mentioning Id
 
-		forButton.addEventListener('click', function(event){
-			heading.style.color = 'green';
-			heading.style.fontSize = '50px'
-			console.log('Button clicked', event);
+		// forButton.addEventListener('click', function(event){
+		// 	heading.style.color = 'green';
+		// 	heading.style.fontSize = '30px'
+		// 	console.log('Button clicked', event);
+		// });
+
+
+										// JS OOP Practice
+
+		// Bank Account with OOP
+		
+		// Creating constructor
+		function BankAccount(customerName, balance = 0){
+			this.customerName = customerName;
+			this.accountNumber = Date.now();
+			this.balance = balance;
+
+		// we can add methods to constructors too 
+			
+		/*Adding following methods into constructors is not optimized way in real life
+		projects, to achieve optimized way would come after inheritance concept*/
+			
+			// Deposit method added	
+			this.deposit = function(amount){
+				// body...
+				this.balance += amount;
+			};
+			// Withdraw method added
+			this.withdraw = (amount) => {
+				// body...
+				this.balance -= amount;
+			};
+		}
+	/*	// Creating new objects
+		const customer1 = new BankAccount('Ahmed', 1000);
+		const customer2 = new BankAccount('Nauman', 1300);
+
+		// Displaying objects in browser's console
+		console.log(customer1);
+		console.log(customer2);
+
+		//called deposit method
+		customer1.deposit(1500);
+		console.log('New Balance of Ahmed is: ' + customer1.balance);
+
+		//called withdrawal method
+		customer2.withdraw(300);
+		console.log('New Balance of Nauman is: ' + customer2.balance); */
+
+		/*Here we will use DOM to create object of bank account*/
+		// Created arry to store accounts
+		const accounts = [];
+		// Get DOM values and stored into a variable to manipulate them
+		const accountForm = document.querySelector('#acForm');
+		const cName = document.querySelector('#customerName');
+		const balance = document.querySelector('#balance');
+		// Added event to form
+		accountForm.addEventListener('submit', (e) => {
+			// To prevent refreshing page
+			e.preventDefault();
+			
+			/*Following we store dynamically customer details into accounts[] (array). 
+			The + sign is to convert string into number*/
+			const account = new BankAccount(cName.value, +balance.value);
+			// To add accounts into array
+			accounts.push(account);
+			// To view work into console
+			console.log(accounts);
 		});
-
-

@@ -68,9 +68,10 @@ allocated to the parent class*/
 	background-color: lightgray;
 	text-align: center;
 	float: left;
-	line-height: 650px;
+/*	line-height: 650px;*/
 	font-size: 20px;
 	font-family: sans-serif;
+
 }
 
 /*=======Side Bar=======*/
