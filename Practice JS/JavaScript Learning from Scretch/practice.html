@@ -4,22 +4,92 @@
 		<title>Practice</title>
 	</head>
 	<body>
-		<h1 class="dom">Index World</h1>
-		<button class="btn">Click me</button>
+		<!-- <h1 class="dom">Index World</h1>
+		<button class="btn">Click me</button> -->
 
+			<form id="accountForm">
+
+				<input type="text" placeholder="Customer name" id="customerName">
+			</br>
+			</br>
+				<input type="number" placeholder="Initial balance" id="balance">
+			</br>
+			</br>
+				<button>Creat account</button>
+
+			</form>
 
 
 
 <script>
 	
+	/* Following code is for DOM manipulation and addEventListener() method.
 	const heading = document.querySelector('.dom');
 	const button = document.querySelector('.btn');
 
 	button.addEventListener('click', function(event){
 		console.log('Button Clicked', event) // Just to confirm the metthod worked properly
+		heading.innerHTML = 'Value has been changed'
 		heading.style.color = 'red'
 		heading.style.fontSize = '100px';
-	});
+	});*/
+
+		// Following code is for practice OOP by creating Bank Account functions
+
+		function BankAccount(customerName, balance = 0) {
+			this.customerName = customerName;
+			this.accountNumber = Date.now();
+			this.balance = balance;
+
+
+			//deposit amount function
+			this.deposit = function(amount){
+				this.balance += amount;
+			};
+			//withdraw amount function
+			this.withdraw = (amount) => {
+				// debugger;
+				this.balance -= amount;
+				// debugger;
+				
+			};
+		}
+				// first custmer object created via constructor
+		/*const customer1 = new BankAccount('Sohail', 3000);
+		console.log(customer1);
+
+				// first custmer object created via constructor
+		const customer2 = new BankAccount('Azmat', 5000);
+		console.log(customer2);
+
+		customer1.deposit(45000);
+		console.log('customer1 new balance:' + customer1.balance);	
+		debugger;	
+		customer1.withdraw(10000);
+		console.log('customer1 new balance:' + customer1.balance);*/
+
+		const accounts = [];
+		// Get DOM values and stored into a variable to manipulate them
+		const accountForm = document.querySelector('#accountForm');
+		const cName = document.querySelector('#customerName');
+		const balance = document.querySelector('#balance');
+		// Added event to form
+		accountForm.addEventListener('submit', (e) => {
+			// To prevent refreshing page
+			e.preventDefault();
+			
+			/*Following we store dynamically customer details into accounts[] (array). 
+			The + sign is to convert string into number*/
+			const account = new BankAccount(cName.value, +balance.value);
+			// To add accounts into array
+			accounts.push(account);
+			// To view work into console
+			console.log(accounts);
+
+		});			
+
+
+
 
 
 

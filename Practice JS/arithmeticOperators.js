@@ -150,8 +150,52 @@
 //        console.log('There is no such day');
 // }
 
-var i = 2018;
-while (i <= 2022){
-    console.log(i)
-    i++;
+// var i = 2018;
+// while (i <= 2022){
+//     console.log(i)
+//     i++;
+// }
+
+/*====== Exercise: Practice with if statement with loop ======*/
+
+// for (var i = 1; i < 11 ;i++){
+//     if (i == 1){
+//         console.log("Gold medal");
+//     }else if(i == 2){
+//         console.log("Silver medal");
+//     }else if(i == 3){
+//         console.log("Bronze medal");
+//     }else{
+//         console.log(i);
+//     }
+
+// }
+/*====== Exercise: Practice with switch statement with loop ======*/
+
+for (var i = 1; i < 11 ;i++){
+    switch (i){
+        case 1:
+        console.log("Gold medal");
+        break;
+        case 2:
+        console.log("Silver medal");
+        break;
+        case 3:
+        console.log("Bronze medal");
+        break;
+        default:
+        console.log(i);
+    }
+
+}
+
+/*====== Exercise: Practice with switch statement with loop ======*/
+
+var i = 7;
+var j = 2;
+
+if (i < 7 || j < 5){
+    console.log("X");
+}else{
+    console.log("Y");
 }
