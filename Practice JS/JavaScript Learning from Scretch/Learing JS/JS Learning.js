@@ -1,11 +1,11 @@
 //Practice of project Bank Account with using classes, constructor and function
 
-// class
+// class with inheritence and encapsulation
 
 class BankAccount {
 
 	customerName;
-
+ 
 	accountNumber;
 
 	balance = 0;
@@ -83,7 +83,6 @@ class savingAccount extends BankAccount {
 	ahmedAccount.deposit(100)
 
 	console.log(ahmedAccount);
-
 
 	akifAccount.withdraw(140)
 
