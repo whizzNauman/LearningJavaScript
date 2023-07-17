@@ -8,85 +8,86 @@ class BankAccount {
 
 	accountNumber;
 
-	balance = 0;			
+	balance = 0;
 
 
-	// constructor
+	// constructor added
 	constructor (customerName, balance) {
 
-	this.customerName = customerName;
+    this.customerName = customerName;
 
-	this.accountNumber = Date.now();
+    this.accountNumber = Date.now();
 
-	this.balance = balance;
+    this.balance = balance;
 
 	}
+
 
 	// deposit function
 	deposit (amount) {
+		this.balance += amount;	
 
-		this.balance += amount;
-
-	}
+		}
 
 	// withdraw function
 	withdraw (amount) {
-
 		this.balance -= amount;
-	}
+		}
 
 }
+// class for current account
+class currentAccount extends BankAccount {
 
-const customer1 = new BankAccount('Nauman', 4000);
+	transactionLimit = 3000;
+    
+    constructor (customerName, balance = 0) {
 
-const customer2 = new BankAccount('Irfan',0);
+    	super(customerName, balance);
 
-console.log(customer1);
+    }
 
-console.log(customer2);
+    takeBusinessLoan (amount) {
 
-customer1.deposit(300);
+    	console.log('Taking business loan: ', + amount);
+    }
+}
+// class for saving account
+class savingAccount extends BankAccount {
 
-customer2.deposit(5000);
+	transactionLimit = 1500;
+    
+    constructor (customerName, balance = 0) {
 
-console.log(customer1);
+    	super(customerName, balance);
 
-console.log(customer2);
+    }
 
+    takePersonnalLoan (amount) {
 
+    	console.log('Taking personal loan: ', + amount);
+    }
+}
 
+	const ahmedAccount = new savingAccount('Ahmed', 50);
 
+	const akifAccount = new currentAccount('Akif', 200);
 
+	ahmedAccount.takePersonnalLoan(3000);
 
+	akifAccount.takeBusinessLoan(5000)
 
+	console.log(ahmedAccount);
 
+	console.log(akifAccount);
 
+	ahmedAccount.deposit(100)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	console.log(ahmedAccount);
 
 
+	akifAccount.withdraw(140)
 
+	console.log(akifAccount);
 
 
 
