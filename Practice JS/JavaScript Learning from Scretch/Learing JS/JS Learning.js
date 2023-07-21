@@ -1,10 +1,10 @@
 //Practice of project Bank Account with using classes, constructor and function
 
-// class with inheritence and encapsulation
+// class based bank account with partial encapsulation
 
 class BankAccount {
 
-	customerName;
+	#customerName;
  
 	accountNumber;
 
@@ -14,204 +14,170 @@ class BankAccount {
 	// constructor added
 	constructor (customerName, balance) {
 
-    this.customerName = customerName;
+	this.#customerName = customerName;
 
-    this.accountNumber = Date.now();
+	this.accountNumber = Date.now();
 
-    this.balance = balance;
+	this.balance = balance;
+
+	}
+	// Deposit function
+	deposit (amount) {
+
+		this.balance += amount;
 
 	}
 
-
-	// deposit function
-	deposit (amount) {
-		this.balance += amount;	
-
-		}
-
-	// withdraw function
+	// Withdraw function
 	withdraw (amount) {
+
 		this.balance -= amount;
-		}
+	}
 
 }
-// class for current account
-class currentAccount extends BankAccount {
 
-	transactionLimit = 3000;
-    
-    constructor (customerName, balance = 0) {
+const accounts = [];
 
-    	super(customerName, balance);
+// Account creation block
 
-    }
+const accountForm = document.querySelector('#bankAccount');
 
-    takeBusinessLoan (amount) {
+const cmName = document.querySelector('#customerName');
 
-    	console.log('Taking business loan: ', + amount);
-    }
-}
-// class for saving account
-class savingAccount extends BankAccount {
+const blnce = document.querySelector('#balance');
 
-	transactionLimit = 1500;
-    
-    constructor (customerName, balance = 0) {
+// Deposit block
 
-    	super(customerName, balance);
+const depositForm = document.querySelector('#depositForm');
 
-    }
+const accountNumber = document.querySelector('#acNumber');
 
-    takePersonnalLoan (amount) {
+const amount = document.querySelector('#amount');
 
-    	console.log('Taking personal loan: ', + amount);
-    }
-}
+// Withdraw block
 
-	const ahmedAccount = new savingAccount('Ahmed', 50);
+const withdrawForm = document.querySelector('#withdrawForm');
 
-	const akifAccount = new currentAccount('Akif', 200);
+const acNumber = document.querySelector('#wNumber');
 
-	ahmedAccount.takePersonnalLoan(3000);
-
-	akifAccount.takeBusinessLoan(5000)
-
-	console.log(ahmedAccount);
-
-	console.log(akifAccount);
-
-	ahmedAccount.deposit(100)
-
-	console.log(ahmedAccount);
-
-	akifAccount.withdraw(140)
-
-	console.log(akifAccount);
+const withdrawlAmount = document.querySelector('#wAmount');
 
 
-
-
-// //Constructor
-
-// function BankAccount(customerName, balance = 0){
-
-// 	this.customerName = customerName;
-
-// 	this.accountNumber = Date.now();
-
-// 	this.balance = balance;
-
-// 	// Deposit function
-// 	this.deposit = function (amount){
-
-// 		this.balance += amount;
-
-// 	}
-// 	// Withdraw function
-// 	this.withdraw = (amount) => {
-
-// 	this.balance -= amount;
-// 	}
-
-// }
-
-// // Following console base interation with objects and methods
-
-// // const customer1 = new BankAccount("Nauman", 5000);
-// // const customer2 = new BankAccount("Feena");
-// // console.log(customer1);
-// // console.log(customer2);
-// // customer2.deposit(500);
-// // customer1.withdraw(500);
-// // console.log(customer1);
-// // console.log(customer2);
-
-// // ========================================================================
-
-// // To store account details in memory we have created an array
-
-// const accounts = [];
-
-// // Account creation block
-
-// const accountForm = document.querySelector('#bankAccount');
-
-// const cmName = document.querySelector('#customerName');
-
-// const balance = document.querySelector('#balance');
-
-// // Deposit block
-
-// const depositForm = document.querySelector('#depositForm');
-
-// const accountNumber = document.querySelector('#acNumber');
-
-// const amount = document.querySelector('#amount');
-
-// // Withdraw block
-
-// const withdrawForm = document.querySelector('#withdrawForm');
-
-// const acNumber = document.querySelector('#wNumber');
-
-// const withdrawlAmount = document.querySelector('#wAmount');
-
-
-// accountForm.addEventListener('submit', (e) => {
+accountForm.addEventListener('submit', (e) => {
 	
-// 	e.preventDefault();
+	e.preventDefault();
 
-// 	//Following line to store dynamically account details in an account variable
-// 	const account = new BankAccount(cmName.value, +balance.value);
+	//Following line to store dynamically account details in an account variable
+	const account = new BankAccount(cmName.value, +blnce.value);
 	
-// 	//Since we use push method to add data in an array
-// 	accounts.push(account);
+	//Since we use push method to add data into an array
+	accounts.push(account);
 	
-// 	console.log(account);
-
-
-// });
-
-// depositForm.addEventListener('submit', (e) => {
-
-// 	e.preventDefault();
-
-// 	/*
-// 	The following line is very imp wherein we call find method on our array,
-// 	applied a check on account if the user entered value is equal to the value of account number 
-// 	availabe in array, added "+" sign to satisfy the "===" condtition by converting string 
-// 	into integer.
-// 	*/
-// 	const account = accounts.find(
-
-// 		(account) => account.accountNumber === +accountNumber.value);
+	console.log(account);
 	
-// 	// Then called a deposit method on our above variable (account)
-// 	account.deposit(+amount.value);
 
 
-// 	console.log(accounts);
+});
 
-// });
+depositForm.addEventListener('submit', (e) => {
 
-// withdrawForm.addEventListener('submit', (e) => {
+	e.preventDefault();
 
-// 	e.preventDefault();
+	/*
+	The following line is very imp wherein we call find method on our array,
+	applied a check on account if the user entered value is equal to the value of account number 
+	availabe in array, added "+" sign to satisfy the "===" condtition by converting string 
+	into integer.
+	*/
+	const account = accounts.find(
 
-// 	/*
-// 	The following line is very imp wherein we call find method on our array,
-// 	applied a check on account if the user entered value is equal to the value of account number 
-// 	availabe in array, added "+" sign to satisfy the "===" condtition by converting string 
-// 	into integer.
-// 	*/
+		(account) => account.accountNumber === +accountNumber.value);
+	
+	// Then called a deposit method on our above variable (account)
+	account.deposit(+amount.value);
 
-// 	const account = accounts.find(
 
-// 		(account) => account.accountNumber === +acNumber.value);
+	console.log(accounts);
 
-// 	// Then called a deposit method on our above variable (foundAccount)
-// 	account.withdraw(+withdrawlAmount.value);
+});
 
-// 	console.log(accounts);
+withdrawForm.addEventListener('submit', (e) => {
 
-// });
+	e.preventDefault();
+
+	/*
+	The following line is very imp wherein we call find method on our array,
+	applied a check on account if the user entered value is equal to the value of account number 
+	availabe in array, added "+" sign to satisfy the "===" condtition by converting string 
+	into integer.
+	*/
+
+	const account = accounts.find(
+
+		(account) => account.accountNumber === +acNumber.value);
+
+	// Then called a deposit method on our above variable (foundAccount)
+	account.withdraw(+withdrawlAmount.value);
+
+	console.log(accounts);
+});
+
+
+
+
+
+//======================================== Notes ==========================================//
+
+// In object-oriented programming, classes are used to define blueprints for creating objects that
+
+// share common characteristics and behavior. The class definition serves as a template, and objects 
+
+// are instances created based on that template. In JavaScript, classes were introduced with ES6 to 
+
+// provide a more structured and syntactically convenient way to work with object-oriented concepts.
+
+//===Here's why we typically don't use an array block (or any other data storage) inside the class:===/
+
+// 1 - Separation of Concerns: Classes are mainly intended to define the structure and behavior of objects, 
+
+// not to store data. In an object-oriented design, it's generally better to keep data and behavior 
+
+// separated. Data storage, such as arrays, should typically be handled outside the class as part of 
+
+// the application's global state.
+
+// 2 - Reusability: Keeping data storage outside the class allows you to reuse the class for different 
+
+// contexts or scenarios. For example, you might want to use the same BankAccount class to handle multiple
+
+// instances of bank accounts with different data stored in different arrays or data structures.
+
+// 3 - Encapsulation: Encapsulation is one of the core principles of object-oriented programming. 
+
+// It refers to the concept of bundling data (attributes) and methods (behavior) that operate on the 
+
+// data within a single unit (the class). By keeping the array outside the class, you are maintaining a 
+
+// clear boundary between the internal state (properties) of the class and external data.
+
+// Regarding placing lines of code after the accounts array outside the class, it's because those 
+
+// lines are not part of the class definition; they are part of the application logic that uses the class.
+
+// The class definition defines the blueprint for objects, and anything that interacts with the objects or 
+
+// utilizes them should be outside the class.
+
+// In the provided example, const accounts = []; is a global array that stores instances of the 
+
+// BankAccount class. It should be accessible to other parts of the application, not confined within 
+
+// the class. The subsequent event listeners and the associated logic are part of the application's 
+
+// interaction with the BankAccount objects and should also be placed outside the class.
+
+// Overall, keeping data and application logic outside the class allows for better separation of concerns, 
+
+// more flexibility, and adherence to object-oriented design principles. It's a recommended practice when 
+
+// working with classes in JavaScript or any other object-oriented programming language.
